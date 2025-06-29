@@ -1,5 +1,5 @@
 {
-    "task":"swingup",
+    "task":"slimevolley",
     "maxGen": 8,
     "popSize": 32,
     "alg_nReps": 2,

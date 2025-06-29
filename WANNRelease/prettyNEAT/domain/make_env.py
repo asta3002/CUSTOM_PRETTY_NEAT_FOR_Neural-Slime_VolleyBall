@@ -1,5 +1,6 @@
 import numpy as np
 import gym
+import slimevolleygym
 from matplotlib.pyplot import imread
 
 
