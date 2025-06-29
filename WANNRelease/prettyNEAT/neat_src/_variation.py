@@ -61,14 +61,21 @@ def recombine(self, species, innov, gen):
   for i in range(nElites):
     children.append(pop[i])
     nOffspring -= 1
+    if(nOffspring==0):
+      break
+
 
   # Get parent pairs via tournament selection
   # -- As individuals are sorted by fitness, index comparison is 
   # enough. In the case of ties the first individual wins
+ 
   parentA = np.random.randint(len(pop),size=(nOffspring,p['select_tournSize']))
   parentB = np.random.randint(len(pop),size=(nOffspring,p['select_tournSize']))
   parents = np.vstack( (np.min(parentA,1), np.min(parentB,1) ) )
-  parents = np.sort(parents,axis=0) # Higher fitness parent first    
+  parents = np.sort(parents,axis=0) # Higher fitness parent first
+  # except:
+  #   print(f"pop_size :{len(pop)}, nOffspring :{nOffspring}")
+        
   
   # Breed child population
   for i in range(nOffspring):  

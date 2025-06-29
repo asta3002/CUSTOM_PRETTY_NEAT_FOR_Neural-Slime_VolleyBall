@@ -81,9 +81,9 @@ def main(args):
     fileName = args.outPrefix
     hyp_default = args.default
     hyp_adjust = args.hyperparam
-    print(f"fileName :{fileName}")
-    print(f"hyp_default :{hyp_default}")
-    print(f"hyp_adjust :{hyp_adjust}")
+    # print(f"fileName :{fileName}")
+    # print(f"hyp_default :{hyp_default}")
+    # print(f"hyp_adjust :{hyp_adjust}")
     hyp = loadHyp(pFileName=hyp_default)
     updateHyp(hyp, hyp_adjust)
 
