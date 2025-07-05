@@ -3,6 +3,31 @@ import gym
 import slimevolleygym
 from matplotlib.pyplot import imread
 
+class SurvivalRewardEnv(gym.RewardWrapper):
+  """
+  A RewardWrapper for Gymnasium environments that adds a small
+  survival bonus to the reward at each timestep.
+
+  This encourages the agent to prolong the episode.
+  """
+  def __init__(self, env):
+    """
+    Initializes the SurvivalRewardEnv wrapper.
+
+    :param env: (Gymnasium Environment) The environment to wrap.
+    """
+    super().__init__(env) # Preferred way to call parent constructor in Python 3+
+    print("SurvivalRewardEnv initialized: Adding +0.01 reward per timestep.")
+
+  def reward(self, reward):
+    """
+    Modifies the reward by adding a survival bonus.
+
+    :param reward: (float) The original reward from the wrapped environment.
+    :return: (float) The modified reward.
+    """
+    # Add a small positive constant to the reward for each timestep
+    return reward + 0.001
 
 def make_env(env_name, seed=-1, render_mode=False):
   # -- Bullet Environments ------------------------------------------- -- #
@@ -53,8 +78,12 @@ def make_env(env_name, seed=-1, render_mode=False):
     if (env_name.startswith("CartPoleSwingUp_Hard")):
       env.dt = 0.01
       env.t_limit = 200
-
-  # -- Other  -------------------------------------------------------- -- #
+  elif (env_name.startswith("SlimeVolley")):
+    
+    og_env = gym.make(env_name)
+    env = SurvivalRewardEnv(og_env)
+    print("Up&Running")
+  # -- Other  ------------------------------------------------------- -- #
   else:
     env = gym.make(env_name)
 

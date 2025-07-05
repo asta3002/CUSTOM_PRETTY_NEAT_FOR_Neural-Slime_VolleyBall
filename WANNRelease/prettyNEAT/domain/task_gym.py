@@ -32,7 +32,7 @@ class GymTask():
     self.actSelect = game.actionSelect
     if not paramOnly:
       self.env = make_env(game.env_name)
-    
+    print(self.env)
     # Special needs...
     self.needsClosed = (game.env_name.startswith("CartPoleSwingUp"))    
   

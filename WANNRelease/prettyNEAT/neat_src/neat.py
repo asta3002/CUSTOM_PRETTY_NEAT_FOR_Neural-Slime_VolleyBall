@@ -143,7 +143,7 @@ def loadHyp(pFileName, printHyp=False):
   with open(pFileName) as data_file: hyp = json.load(data_file)
 
   # Task hyper parameters
-  task = GymTask(games[hyp['task']],paramOnly=True)
+  task = GymTask(games[hyp['task']],paramOnly=False)
   hyp['ann_nInput']   = task.nInput
   hyp['ann_nOutput']  = task.nOutput
   hyp['ann_initAct']  = task.activations[0]

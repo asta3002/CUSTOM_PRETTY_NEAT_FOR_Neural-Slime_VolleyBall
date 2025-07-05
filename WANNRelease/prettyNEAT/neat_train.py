@@ -244,7 +244,8 @@ def main(argv):
   fileName    = args.outPrefix
   hyp_default = args.default
   hyp_adjust  = args.hyperparam
-
+  print(f"Adjust: {hyp_adjust}")
+  print(f"Def: {hyp_default}")
   hyp = loadHyp(pFileName=hyp_default)
   updateHyp(hyp,hyp_adjust)
 
