@@ -28,6 +28,7 @@ def master():
   for gen in range(hyp['maxGen']):        
     pop = neat.ask()            # Get newly evolved individuals from NEAT  
     reward = batchMpiEval(pop)  # Send pop to be evaluated by workers
+    
     neat.tell(reward)           # Send fitness to NEAT    
 
     data = gatherData(data,neat,gen,hyp)
