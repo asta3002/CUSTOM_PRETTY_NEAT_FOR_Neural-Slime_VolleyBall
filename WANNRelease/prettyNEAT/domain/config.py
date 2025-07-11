@@ -191,5 +191,6 @@ slimevolley = Game(
         'ball_x', 'ball_y', 'ball_vx', 'ball_vy',
         'left', 'right', 'jump'
     ]
+    x_agent, y_agent, x_agent_next, y_agent_next, x_ball, y_ball, x_ball_next, y_ball_next, x_opponent, y_opponent, x_opponent_next, y_opponent_next
 )
 games['slimevolley'] = slimevolley

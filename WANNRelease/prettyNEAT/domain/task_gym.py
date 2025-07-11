@@ -85,11 +85,11 @@ class GymTask():
     self.env.t = 0
     annOut = act(wVec, aVec, self.nInput, self.nOutput, state)  
     action = selectAct(annOut,self.actSelect)    
-    print(action)
+    # print(action)
     wVec[wVec!=0]
     predName = str(np.mean(wVec[wVec!=0]))
     state, reward, done, info = self.env.step(action)
-    print(reward)
+    # print(reward)
     
     if self.maxEpisodeLength == 0:
       if view:
