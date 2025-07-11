@@ -173,7 +173,7 @@ games['bullet_ant'] = bullet_ant
 #--SlimeVolleyball-----------------------------
 slimevolley = Game(
     env_name="SlimeVolley-v0",
-    actionSelect='softmax',         # MultiBinary(3) → use all outputs as is
+    actionSelect='all',         # MultiBinary(3) → use all outputs as is
     input_size=12,              # 12-dimensional state space
     output_size=3,              # 3 binary actions: LEFT, RIGHT, JUMP
     time_factor=0,              # Take action every frame

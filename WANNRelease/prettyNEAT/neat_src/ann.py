@@ -256,6 +256,7 @@ def selectAct(action, actSelect):
     action = weightedRandom(np.sum(action,axis=0))
   else:
     action = action.flatten()
+  
   return action
 
 def softmax(x):
