@@ -2,7 +2,7 @@ import numpy as np
 import gym
 import slimevolleygym
 from matplotlib.pyplot import imread
-
+from SlimeVolleyEnv import SlimeEnv
 class SurvivalRewardEnv(gym.RewardWrapper):
   """
   A RewardWrapper for Gymnasium environments that adds a small
@@ -80,7 +80,8 @@ def make_env(env_name, seed=-1, render_mode=False):
       env.t_limit = 200
   elif (env_name.startswith("SlimeVolley")):
     
-    og_env = gym.make(env_name)
+    # og_env = gym.make(env_name)
+    og_env = SlimeEnv(render_mode="human")
     env = SurvivalRewardEnv(og_env)
     print("Up&Running")
   # -- Other  ------------------------------------------------------- -- #

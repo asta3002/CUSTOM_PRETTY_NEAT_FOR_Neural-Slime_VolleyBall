@@ -75,11 +75,10 @@ class Neat():
     node = np.empty((3,len(nodeId)))
     node[0,:] = nodeId
     
-    # Node types: [1:input, 2:hidden, 3:bias, 4:output]
-    node[1,0]             = 4 # Bias
+    # Node types: (1=input, 2=output 3=hidden 4=bias)
+    node[1,0]             = 4 # Bias   <-------CHANGE 4->3
     node[1,1:p['ann_nInput']+1] = 1 # Input Nodes
-    node[1,(p['ann_nInput']+1):\
-           (p['ann_nInput']+p['ann_nOutput']+1)]  = 2 # Output Nodes
+    node[1, (p['ann_nInput']+1):(p['ann_nInput'] + p['ann_nOutput'] + 1)] = 2  # Output Nodes<------CHANGE 2->4
     
     # Node Activations
     node[2,:] = p['ann_initAct']
@@ -97,13 +96,20 @@ class Neat():
         
     # Create population of individuals with varied weights
     pop = []
+    invalid=0
     for i in range(p['popSize']):
         newInd = Ind(conn, node)
         newInd.conn[3,:] = (2*(np.random.rand(1,nConn)-0.5))*p['ann_absWCap']
         newInd.conn[4,:] = np.random.rand(1,nConn) < p['prob_initEnable']
-        newInd.express()
+        express_result = newInd.express()
         newInd.birth = 0
-        pop.append(copy.deepcopy(newInd))  
+        if(express_result):
+          pop.append(copy.deepcopy(newInd)) 
+
+        else:
+          invald+=1
+    if(invalid>0):
+      print(f"Invalid/Acyclic Ind : {invalid}") 
     # - Create Innovation Record -
     innov = np.zeros([5,nConn])
     innov[0:3,:] = pop[0].conn[0:3,:]

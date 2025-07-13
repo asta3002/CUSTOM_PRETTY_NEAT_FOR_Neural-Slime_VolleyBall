@@ -45,9 +45,14 @@ def getNodeOrder(nodeG,connG):
   dest = conn[2,:].astype(int)
   
   lookup = node[0,:].astype(int)
-  for i in range(len(lookup)): # Can we vectorize this?
-    src[np.where(src==lookup[i])] = i
-    dest[np.where(dest==lookup[i])] = i
+  # for i in range(len(lookup)): # Can we vectorize this?
+  #   src[np.where(src==lookup[i])] = i
+  #   dest[np.where(dest==lookup[i])] = i
+  ##vectorized option######   <---CHANGE
+  id_to_index = {nid: i for i, nid in enumerate(lookup)}
+  src = np.vectorize(id_to_index.get)(src)
+  dest = np.vectorize(id_to_index.get)(dest)
+
   
   wMat = np.zeros((np.shape(node)[1],np.shape(node)[1]))
   wMat[src,dest] = conn[3,:]

@@ -177,20 +177,19 @@ slimevolley = Game(
     input_size=12,              # 12-dimensional state space
     output_size=3,              # 3 binary actions: LEFT, RIGHT, JUMP
     time_factor=0,              # Take action every frame
-    layers=[20, 0],             # 1 hidden layer with 20 neurons
+    layers=[4, 0],              # 1 hidden layer with 20 neurons
     i_act=np.full(12, 1),       # Input activation: Linear (ID 1)
-    h_act=list(range(1, 12)),   # Hidden activations: IDs 1 to 11 (all available)
-    o_act=np.full(3, 6),        # Output activation: Sigmoid (ID 6) — good for binary
+    h_act=np.full(12, 1),   # Hidden activations: IDs 1 to 11 (all available)
+    o_act=[6],       # Output activation: Sigmoid (ID 6) — good for binary
     weightCap=2.0,              # Clamp max weight magnitude
     noise_bias=0.0,             # No noise on biases
     output_noise=[False, False, False],  # No noise on outputs
-    max_episode_length=1000,    # SlimeVolley episodes are capped at 1000 steps
+    max_episode_length=3000,    # SlimeVolley episodes are capped at 1000 steps
     in_out_labels=[
         'agent_x', 'agent_y', 'agent_vx', 'agent_vy',
         'opponent_x', 'opponent_y', 'opponent_vx', 'opponent_vy',
         'ball_x', 'ball_y', 'ball_vx', 'ball_vy',
         'left', 'right', 'jump'
-    ]
-    x_agent, y_agent, x_agent_next, y_agent_next, x_ball, y_ball, x_ball_next, y_ball_next, x_opponent, y_opponent, x_opponent_next, y_opponent_next
+    ]    
 )
 games['slimevolley'] = slimevolley
