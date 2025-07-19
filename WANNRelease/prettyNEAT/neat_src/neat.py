@@ -62,7 +62,7 @@ class Neat():
     """
     for i in range(np.shape(reward)[0]):
       self.pop[i].fitness = reward[i]
-      self.pop[i].nConn   = self.pop[i].nConn
+      # self.pop[i].nConn   = self.pop[i].nConn
   
   def initPop(self):
     """Initialize population with a list of random individuals
@@ -76,9 +76,9 @@ class Neat():
     node[0,:] = nodeId
     
     # Node types: (1=input, 2=output 3=hidden 4=bias)
-    node[1,0]             = 4 # Bias   <-------CHANGE 4->3
+    node[1,0]             = 4 # Bias   
     node[1,1:p['ann_nInput']+1] = 1 # Input Nodes
-    node[1, (p['ann_nInput']+1):(p['ann_nInput'] + p['ann_nOutput'] + 1)] = 2  # Output Nodes<------CHANGE 2->4
+    node[1, (p['ann_nInput']+1):(p['ann_nInput'] + p['ann_nOutput'] + 1)] = 2   
     
     # Node Activations
     node[2,:] = p['ann_initAct']
@@ -107,7 +107,7 @@ class Neat():
           pop.append(copy.deepcopy(newInd)) 
 
         else:
-          invald+=1
+          invalid+=1
     if(invalid>0):
       print(f"Invalid/Acyclic Ind : {invalid}") 
     # - Create Innovation Record -
