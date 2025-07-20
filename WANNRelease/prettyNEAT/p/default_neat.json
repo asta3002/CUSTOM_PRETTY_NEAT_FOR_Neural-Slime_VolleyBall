@@ -2,7 +2,7 @@
     "task":"slimevolley",
     "maxGen": 150,
     "popSize": 150,
-    "alg_nReps": 50,
+    "alg_nReps": 30,
     "alg_speciate": "neat",
     "alg_probMoo": 0.3,
     "alg_act": 0,
