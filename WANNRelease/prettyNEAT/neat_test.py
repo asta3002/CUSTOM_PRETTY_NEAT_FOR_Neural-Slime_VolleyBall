@@ -20,7 +20,7 @@ def main(argv):
   # Load task and parameters
   hyp = loadHyp(pFileName=hyp_default)
   updateHyp(hyp,hyp_adjust)
-  task = GymTask(games[hyp['task']], nReps=hyp['alg_nReps'])
+  task = GymTask(games[hyp['task']], nReps=hyp['alg_nReps'],testing_mode=True)
 
   # Bullet needs some extra help getting started
   if hyp['task'].startswith("bullet"):

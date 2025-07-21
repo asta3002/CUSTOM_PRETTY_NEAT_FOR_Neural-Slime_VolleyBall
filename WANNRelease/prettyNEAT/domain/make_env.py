@@ -29,7 +29,7 @@ class SurvivalRewardEnv(gym.RewardWrapper):
     # Add a small positive constant to the reward for each timestep
     return reward + 0.001
 
-def make_env(env_name, seed=-1, render_mode=False):
+def make_env(env_name, seed=-1, render_mode=False,testing_mode=False):
   # -- Bullet Environments ------------------------------------------- -- #
   if "Bullet" in env_name:
     import pybullet as p # pip install pybullet
@@ -82,8 +82,13 @@ def make_env(env_name, seed=-1, render_mode=False):
     
     og_env = gym.make(env_name)
     # og_env = SlimeEnv(render_mode="human")
-    env = SurvivalRewardEnv(og_env)
-    print("Up&Running")
+    if not testing_mode:
+      env = SurvivalRewardEnv(og_env)
+      print("Up&Running")
+    else:
+      
+      env = og_env
+    
   # -- Other  ------------------------------------------------------- -- #
   else:
     env = gym.make(env_name)
