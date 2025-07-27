@@ -1,8 +1,8 @@
 {
-    "task":"slimevolley",
-    "maxGen": 150,
-    "popSize": 300,
-    "alg_nReps": 10,
+    "task":"slimevolley", //need to update task_gym, make_env 
+    "maxGen": 150,     //Number of Generations, to run NEAT
+    "popSize": 300,    // The max Population size
+    "alg_nReps": 5,   // The number of times each individual  gets to test and mean reward is calculated 
     "alg_speciate": "neat",
     "alg_probMoo": 0.3,
     "alg_act": 0,
@@ -18,13 +18,13 @@
     "select_rankWeight": "exp",
     "select_tournSize": 10,
     "spec_compatMod": 0.25,
-    "spec_dropOffAge": 15,
+    "spec_dropOffAge": 30,  //The number of generations to hold a genome without any improvement
     "spec_target": 10,
-    "spec_thresh": 3.0,
+    "spec_thresh": 3.0,  //Compatibility Distance
     "spec_threshMin": 0.1,
-    "spec_geneCoef": 1,
-    "spec_weightCoef": 0.4,
-    "save_mod": 8,
-    "bestReps": 20
+    "spec_geneCoef": 1,  //Used in compatibility distance calculation(c1=c2)
+    "spec_weightCoef": 0.4, //Used in compatibility distance calculation(c3)
+    "save_mod": 1, //
+    "bestReps": 15  //Number of validation trials
 
 }
