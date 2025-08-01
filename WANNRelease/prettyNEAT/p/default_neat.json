@@ -1,30 +1,30 @@
-{
-    "task":"slimevolley", //need to update task_gym, make_env 
-    "maxGen": 500,     //Number of Generations, to run NEAT
-    "popSize": 150,    // The max Population size
-    "alg_nReps": 3,   // The number of times each individual  gets to test and mean reward is  
-    "alg_speciate": "neat", //Enables speciation
-    "alg_probMoo": 0,  //Enables Multiobjective Optiization
-    "alg_act": 0, //Choose the range of activations
-    "prob_addConn": 0.1, // Probability of adding a new connection-helps control complexifying the network
-    "prob_addNode": 0.05, //Probability of adding a new node, again help control the network complexity
-    "prob_crossover": 0.75, // probability of crossover, i.e beneficial gene from both parents
-    "prob_enable": 0.2, //probabilty of renabling disabled connections.allows resurrection of useful
-    "prob_mutAct": 0.1, //
-    "prob_mutConn": 0.8, //probability to mutate connection
-    "prob_initEnable": 0.8, //robablility o fall connections being enabled
-    "select_cullRatio": 0.1, //percent of bottom peformers to remove
-    "select_eliteRatio": 0.2, //ensur top performers are not lost, percent of top performers to preserve
-    "select_rankWeight": "exp",
-    "select_tournSize": 5, //tournament size of parent selection
-    "spec_compatMod": 0.3, //Compatibility Threshold Adjustment Rate
-    "spec_dropOffAge": 20,  //The number of generations to hold a genome without any improvement
-    "spec_target": 8, //number of species
-    "spec_thresh": 4.0,  //Compatibility Distance
-    "spec_threshMin": 0.5, //min no of species to go below
-    "spec_geneCoef": 1,  //Used in compatibility distance calculation(c1=c2)
-    "spec_weightCoef": 0.5, //Used in compatibility distance calculation(c3)
-    "save_mod": 1, //
-    "bestReps": 10  //Number of validation trials
 
+{
+    "task": "slimevolley",
+    "maxGen": 500,
+    "popSize": 150,
+    "alg_nReps": 3,
+    "alg_speciate": "neat",
+    "alg_probMoo": 0,
+    "alg_act": 0,
+    "prob_addConn": 0.1,
+    "prob_addNode": 0.05,
+    "prob_crossover": 0.75,
+    "prob_enable": 0.2,
+    "prob_mutAct": 0.1,
+    "prob_mutConn": 0.6,
+    "prob_initEnable": 0.8,
+    "select_cullRatio": 0.2,
+    "select_eliteRatio": 0.1,
+    "select_rankWeight": "exp",
+    "select_tournSize": 8,
+    "spec_compatMod": 0.3,
+    "spec_dropOffAge": 20,
+    "spec_target": 12,
+    "spec_thresh": 3.0,
+    "spec_threshMin": 0.3,
+    "spec_geneCoef": 1,
+    "spec_weightCoef": 0.5,
+    "save_mod": 1,
+    "bestReps": 10
 }

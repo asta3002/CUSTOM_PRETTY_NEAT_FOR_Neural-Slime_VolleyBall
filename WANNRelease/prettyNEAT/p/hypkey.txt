@@ -31,3 +31,43 @@ spec_geneCoef     - (float)  - weighting of non-matching genes in compatibility 
 spec_weightCoef   - (float)  - weighting of weight differences in compatibility distance calculation
 save_mod          - (int)    - generations between saving results to disk
 bestReps          - (int)    - number of times to test new 'best' solutions to confirm
+
+
+NEAT Algorithm Hyperparameter Definitions:
+
+=== Core Algorithm ===
+task                - Target environment/task name (need to update task_gym, make_env)
+maxGen              - Number of generations to run NEAT
+popSize             - Maximum population size
+alg_nReps           - Number of times each individual gets tested (mean reward calculated)
+alg_speciate        - Enables speciation mechanism
+alg_probMoo         - Enables multiobjective optimization
+alg_act             - Choose the range of activation functions
+
+=== Mutation Probabilities ===
+prob_addConn        - Probability of adding a new connection (helps control network complexification)
+prob_addNode        - Probability of adding a new node (helps control network complexity)
+prob_crossover      - Probability of crossover (beneficial genes from both parents)
+prob_enable         - Probability of re-enabling disabled connections (allows resurrection of useful connections)
+prob_mutAct         - Probability of mutating the activation function
+prob_mutConn        - Probability of mutating connection weights
+prob_initEnable     - Probability of all connections being enabled at initialization
+
+=== Selection Parameters ===
+select_cullRatio    - Percent of bottom performers to remove from population
+select_eliteRatio   - Percent of top performers to preserve (ensures top performers are not lost)
+select_rankWeight   - Ranking weight method ("exp" for exponential, "lin" for linear)
+select_tournSize    - Tournament size for parent selection
+
+=== Speciation Parameters ===
+spec_compatMod      - Compatibility threshold adjustment rate (how fast threshold adapts)
+spec_dropOffAge     - Number of generations to hold a species without improvement before penalty
+spec_target         - Target number of species to maintain
+spec_thresh         - Compatibility distance threshold for species assignment
+spec_threshMin      - Minimum threshold floor (prevents threshold from going too low)
+spec_geneCoef       - Gene difference coefficient in compatibility distance calculation (c1=c2)
+spec_weightCoef     - Weight difference coefficient in compatibility distance calculation (c3)
+
+=== Other ===
+save_mod            - Save modifier/probability
+bestReps            - Number of validation trials for best individual
