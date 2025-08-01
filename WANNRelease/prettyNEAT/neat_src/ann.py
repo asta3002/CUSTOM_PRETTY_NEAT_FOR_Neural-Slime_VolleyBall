@@ -173,16 +173,16 @@ def applyAct(actId, x):
   Lookup table to allow activations to be stored in numpy arrays
 
   case 1  -- Linear
-  case 2  -- Unsigned Step Function
-  case 3  -- Sin
-  case 4  -- Gausian with mean 0 and sigma 1
+  case 2  -- Unsigned Step Function //Avoid for slime
+  case 3  -- Sin  //Avoid
+  case 4  -- Gausian with mean 0 and sigma 1 //Avoid
   case 5  -- Hyperbolic Tangent [tanh] (signed)
   case 6  -- Sigmoid unsigned [1 / (1 + exp(-x))]
-  case 7  -- Inverse
-  case 8  -- Absolute Value
+  case 7  -- Inverse  //avoid
+  case 8  -- Absolute Value //avoid
   case 9  -- Relu
-  case 10 -- Cosine
-  case 11 -- Squared
+  case 10 -- Cosine  //avoid
+  case 11 -- Squared   //avoid
 
   Args:
     actId   - (int)   - key to look up table

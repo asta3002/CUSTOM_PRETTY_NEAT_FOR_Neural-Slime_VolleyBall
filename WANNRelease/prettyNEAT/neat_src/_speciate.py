@@ -80,6 +80,7 @@ def assignSpecies(self, species, pop, p):
 
   """
 
+
   # Get Previous Seeds
   if len(self.species) == 0:
     # Create new species if none exist
