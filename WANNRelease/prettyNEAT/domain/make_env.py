@@ -27,7 +27,7 @@ class SurvivalRewardEnv(gym.RewardWrapper):
     :return: (float) The modified reward.
     """
     # Add a small positive constant to the reward for each timestep
-    return reward + 0.001
+    return reward + 0.0003
 
 def make_env(env_name, seed=-1, render_mode=False,testing_mode=False):
   # -- Bullet Environments ------------------------------------------- -- #
