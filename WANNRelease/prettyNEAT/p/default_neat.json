@@ -3,8 +3,8 @@
     "maxGen": 150,     //Number of Generations, to run NEAT
     "popSize": 300,    // The max Population size
     "alg_nReps": 5,   // The number of times each individual  gets to test and mean reward is calculated 
-    "alg_speciate": "neat",
-    "alg_probMoo": 0.3,
+    "alg_speciate": "neat", //Enables speciation
+    "alg_probMoo": 0,  //Enables Multiobjective Optiization
     "alg_act": 0,
     "prob_addConn": 0.05,
     "prob_addNode": 0.03,

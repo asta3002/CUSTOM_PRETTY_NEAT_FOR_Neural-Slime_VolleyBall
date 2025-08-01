@@ -128,7 +128,7 @@ class Neat():
     objVals = np.c_[meanFit,1/nConns] # Maximize
 
     # Alternate between two objectives and single objective
-    if self.p['alg_probMoo'] < np.random.rand():
+    if self.p['alg_probMoo']>  np.random.rand():   ###My CHANGES
       rank = nsga_sort(objVals[:,[0,1]])
     else: # Single objective
       rank = rankArray(-objVals[:,0])
