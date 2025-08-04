@@ -52,7 +52,7 @@ class Neat():
 
     return self.pop       # Send child population for evaluation
 
-  def tell(self,reward):
+  def tell(self,reward,limts):
     """Assigns fitness to current population
 
     Args:
@@ -62,6 +62,7 @@ class Neat():
     """
     for i in range(np.shape(reward)[0]):
       self.pop[i].fitness = reward[i]
+      self.pop[i].limt = limts[i]
       # self.pop[i].nConn   = self.pop[i].nConn
   
   def initPop(self):

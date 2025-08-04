@@ -20,8 +20,8 @@ def run_neat():
 
     for gen in range(hyp['maxGen']):
         pop = neat.ask()  # Get newly evolved individuals
-        reward = batchEval(pop, task)  # Evaluate sequentially
-        neat.tell(reward)  # Send fitness back to NEAT
+        reward, limts = batchEval(pop, task)  # Evaluate sequentially
+        neat.tell(reward,limts)  # Send fitness back to NEAT
 
         data = gatherData(data, neat, gen, hyp)
         print(gen, '\t - \t', data.display())
@@ -32,10 +32,14 @@ def run_neat():
     data.savePop(neat.pop, fileName)
 
 
+# def batchEval(pop, task):
+#     """Sequential evaluation of the population"""
+#     return np.array([task.getFitness(ind.wMat, ind.aVec) for ind in pop])
 def batchEval(pop, task):
-    """Sequential evaluation of the population"""
-    return np.array([task.getFitness(ind.wMat, ind.aVec) for ind in pop])
-
+    """Sequential evaluation of the population, returns two arrays."""
+    results = [task.getFitness(ind.wMat, ind.aVec) for ind in pop]
+    rewards, limits = zip(*results)
+    return np.array(rewards), np.array(limits)
 
 def gatherData(data, neat, gen, hyp, savePop=False):
     data.gatherData(neat.pop, neat.species)

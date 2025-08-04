@@ -57,10 +57,12 @@ class GymTask():
       nRep = self.nReps
     wVec[np.isnan(wVec)] = 0
     reward = np.empty(nRep)
+    Steps = np.empty(nRep)
     for iRep in range(nRep):
-      reward[iRep] = self.testInd(wVec, aVec, view=view, seed=seed+iRep)
+      reward[iRep],Steps[iRep] = self.testInd(wVec, aVec, view=view, seed=seed+iRep)
     fitness = np.mean(reward)
-    return fitness
+    limt = np.argmax(Steps)
+    return fitness, limt
 
   def testInd(self, wVec, aVec, view=False,seed=-1):
     """Evaluate individual on task
@@ -115,7 +117,7 @@ class GymTask():
         else:
           self.env.render()
       if done:
-        print(tstep)
+        # print(tStep)
         break
-    print(istep,reward)
-    return totalReward
+    # print(istep,reward)
+    return totalReward, istep
