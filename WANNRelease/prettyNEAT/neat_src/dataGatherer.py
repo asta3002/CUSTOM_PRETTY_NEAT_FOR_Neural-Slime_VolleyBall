@@ -22,8 +22,8 @@ class DataGatherer():
     self.spec_fit = []
     self.field = ['x_scale','fit_med','fit_max','fit_top',\
                   'node_med','conn_med',\
-                  'elite','best','longest']
-
+                  'elite','best']
+    self.longest = np.array([]) 
     if self.p['alg_probMoo'] > 0:
       self.objVals = np.array([])
 
@@ -40,6 +40,8 @@ class DataGatherer():
     # Readability
     fitness = [ind.fitness for ind in pop]
     limts = [ind.limt for ind in pop]
+    # print(fitness)
+    # print(limts)
     nodes = np.asarray([np.shape(ind.node)[1] for ind in pop])
     conns = np.asarray([ind.nConn for ind in pop])
     
@@ -70,7 +72,7 @@ class DataGatherer():
     self.fit_med  = np.append(self.fit_med, np.median(fitness))
     self.fit_max  = np.append(self.fit_max,  self.elite[-1].fitness)
     self.fit_top  = np.append(self.fit_top,  self.best[-1].fitness)
-    self.longest = np.append(self.longest,np.argmax(limts))
+    self.longest = np.append(self.longest,  np.max(limts))
     # ------------------------------------------------------------------------ 
 
 
@@ -100,7 +102,7 @@ class DataGatherer():
     """
     return    "|---| Elite Fit: " + '{:.2f}'.format(self.fit_max[-1]) \
          + " \t|---| Best Fit:  "  + '{:.2f}'.format(self.fit_top[-1]) \
-         + " \t|---| Longest Game:  "  + '{:.2f}'.format(self.fit_top[-1]) \
+         + " \t|---| Longest Game:  "  + '{:.2f}'.format(self.longest[-1]) \
 
   def save(self, gen=(-1)):
     """Save algorithm stats to disk

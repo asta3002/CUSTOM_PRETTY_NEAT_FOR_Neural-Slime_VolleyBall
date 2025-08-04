@@ -51,7 +51,7 @@ class Ind():
     self.rank    = []
     self.birth   = []
     self.species = []
-    self.limt = []
+    self.limt = 0
 
   def nConns(self):
     """Returns number of active connections

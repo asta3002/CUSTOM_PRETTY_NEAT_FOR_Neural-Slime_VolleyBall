@@ -38,8 +38,11 @@ def run_neat():
 def batchEval(pop, task):
     """Sequential evaluation of the population, returns two arrays."""
     results = [task.getFitness(ind.wMat, ind.aVec) for ind in pop]
-    rewards, limits = zip(*results)
-    return np.array(rewards), np.array(limits)
+    # print(results)
+    rewards, limts = zip(*results)
+    # print(limts)
+
+    return np.array(rewards), np.array(limts)
 
 def gatherData(data, neat, gen, hyp, savePop=False):
     data.gatherData(neat.pop, neat.species)

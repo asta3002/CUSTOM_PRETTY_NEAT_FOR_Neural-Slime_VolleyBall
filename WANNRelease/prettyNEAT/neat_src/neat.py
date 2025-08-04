@@ -62,7 +62,9 @@ class Neat():
     """
     for i in range(np.shape(reward)[0]):
       self.pop[i].fitness = reward[i]
+      # print(self.pop[i].limt,limts[i])
       self.pop[i].limt = limts[i]
+      # print(self.pop[i].limt,limts[i])
       # self.pop[i].nConn   = self.pop[i].nConn
   
   def initPop(self):

@@ -61,7 +61,10 @@ class GymTask():
     for iRep in range(nRep):
       reward[iRep],Steps[iRep] = self.testInd(wVec, aVec, view=view, seed=seed+iRep)
     fitness = np.mean(reward)
-    limt = np.argmax(Steps)
+    limt = np.max(Steps)
+    # print(fitness)
+    # print(Steps)
+    # print(limt)
     return fitness, limt
 
   def testInd(self, wVec, aVec, view=False,seed=-1):
