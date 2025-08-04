@@ -90,7 +90,7 @@ class GymTask():
     predName = str(np.mean(wVec[wVec!=0]))
     totalReward =0
     state, reward, done, info = self.env.step(action)
-    print(reward, done, info)
+    # print(reward, done, info)
     # print(reward)
     
     if self.maxEpisodeLength == 0:
@@ -102,11 +102,12 @@ class GymTask():
       return reward
     else:
       totalReward += reward
-    istep=0;
+    istep=0
     for tStep in range(self.maxEpisodeLength): 
       annOut = act(wVec, aVec, self.nInput, self.nOutput, state) 
       action = selectAct(annOut,self.actSelect) 
       state, reward, done, info = self.env.step(action)
+      istep+=1
       totalReward += reward  
       if view:
         if self.needsClosed:
@@ -114,6 +115,7 @@ class GymTask():
         else:
           self.env.render()
       if done:
+        print(tstep)
         break
     print(istep,reward)
     return totalReward
