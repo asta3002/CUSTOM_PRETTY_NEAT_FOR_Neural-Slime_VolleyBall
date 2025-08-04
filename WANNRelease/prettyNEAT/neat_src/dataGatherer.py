@@ -40,6 +40,7 @@ class DataGatherer():
     # Readability
     fitness = [ind.fitness for ind in pop]
     limts = [ind.limt for ind in pop]
+    
     # print(fitness)
     # print(limts)
     nodes = np.asarray([np.shape(ind.node)[1] for ind in pop])
@@ -74,7 +75,7 @@ class DataGatherer():
     self.fit_top  = np.append(self.fit_top,  self.best[-1].fitness)
     self.longest = np.append(self.longest,  np.max(limts))
     # ------------------------------------------------------------------------ 
-
+    # print(self.fit_top)
 
     # --- MOO Fronts ---------------------------------------------------------
     if self.p['alg_probMoo'] > 0:
