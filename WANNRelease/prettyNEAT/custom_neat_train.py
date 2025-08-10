@@ -22,7 +22,7 @@ def run_neat():
         pop = neat.ask()  # Get newly evolved individuals
         reward, limts = batchEval(pop, task)  # Evaluate sequentially
         neat.tell(reward,limts)  # Send fitness back to NEAT
-
+ 
         data = gatherData(data, neat, gen, hyp)
         print(gen, '\t - \t', data.display())
 
@@ -66,7 +66,9 @@ def checkBest(data, neat):
         task = GymTask(games[hyp['task']], nReps=hyp['alg_nReps'])
         bestReps = hyp['bestReps']
         rep = [data.best[-1]] * bestReps
-        fitVector = np.array([task.getFitness(ind.wMat, ind.aVec) for ind in rep])
+        outputs = [task.getFitness(ind.wMat, ind.aVec) for ind in rep]
+        fitVector,_ = zip(*outputs)
+        fitVector = np.array(fitVector)
         trueFit = np.mean(fitVector)
         if trueFit > data.best[-2].fitness:
             data.best[-1].fitness = trueFit
