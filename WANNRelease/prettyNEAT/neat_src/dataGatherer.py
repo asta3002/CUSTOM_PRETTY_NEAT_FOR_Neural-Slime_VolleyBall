@@ -39,7 +39,7 @@ class DataGatherer():
 
     # Readability
     fitness = [ind.fitness for ind in pop]
-    limts = [ind.limt for ind in pop]
+    steps_cnt = [ind.steps_cnt for ind in pop]
     # print(fitness)
     # print(limts)
     nodes = np.asarray([np.shape(ind.node)[1] for ind in pop])
@@ -72,7 +72,7 @@ class DataGatherer():
     self.fit_med  = np.append(self.fit_med, np.median(fitness))
     self.fit_max  = np.append(self.fit_max,  self.elite[-1].fitness)
     self.fit_top  = np.append(self.fit_top,  self.best[-1].fitness)
-    self.longest = np.append(self.longest,  np.max(limts))
+    self.longest = np.append(self.longest,  np.max(steps_cnt))
     # ------------------------------------------------------------------------ 
 
 

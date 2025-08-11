@@ -52,20 +52,21 @@ class GymTask():
   
     Returns:
       fitness - (float)    - mean reward over all trials
+      steps_cnt -(int)     - Number of steps survived in the game
     """
     if nRep is False:
       nRep = self.nReps
     wVec[np.isnan(wVec)] = 0
     reward = np.empty(nRep)
-    Steps = np.empty(nRep)
+    steps = np.empty(nRep)
     for iRep in range(nRep):
-      reward[iRep],Steps[iRep] = self.testInd(wVec, aVec, view=view, seed=seed+iRep)
+      reward[iRep],steps[iRep] = self.testInd(wVec, aVec, view=view, seed=seed+iRep)
     fitness = np.mean(reward)
-    limt = np.max(Steps)
+    steps_cnt = np.max(steps)
     # print(fitness)
     # print(Steps)
     # print(limt)
-    return fitness, limt
+    return fitness, steps_cnt
 
   def testInd(self, wVec, aVec, view=False,seed=-1):
     """Evaluate individual on task
@@ -107,7 +108,7 @@ class GymTask():
       return reward
     else:
       totalReward += reward
-    istep=0
+    istep=1
     for tStep in range(self.maxEpisodeLength): 
       annOut = act(wVec, aVec, self.nInput, self.nOutput, state) 
       action = selectAct(annOut,self.actSelect) 

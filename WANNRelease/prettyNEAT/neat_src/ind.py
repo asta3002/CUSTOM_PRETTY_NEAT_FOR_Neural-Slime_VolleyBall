@@ -51,7 +51,7 @@ class Ind():
     self.rank    = []
     self.birth   = []
     self.species = []
-    self.limt = 0
+    self.steps_cnt = []
 
   def nConns(self):
     """Returns number of active connections
@@ -380,6 +380,6 @@ class Ind():
         if innov is not None:
           newInnov = np.hstack((connNew[0:3].flatten(), -1, gen))
           innov = np.hstack((innov,newInnov[:,None]))
-        break;
+        break
 
     return connG, innov
