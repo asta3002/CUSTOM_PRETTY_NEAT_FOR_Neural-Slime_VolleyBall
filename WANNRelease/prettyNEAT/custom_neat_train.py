@@ -22,7 +22,9 @@ def run_neat():
         pop = neat.ask()  # Get newly evolved individuals
         reward, limts = batchEval(pop, task)  # Evaluate sequentially
         neat.tell(reward,limts)  # Send fitness back to NEAT
- 
+        # print(reward)
+        
+
         data = gatherData(data, neat, gen, hyp)
         print(gen, '\t - \t', data.display())
 
